@@ -1,19 +1,22 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import Page1Screen from './Page1Screen';
+import Page1DetailScreen from './Page1DetailScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+const MainStack = createStackNavigator(
+  {
+    Page1: Page1Screen,
+    Page1Detail: Page1DetailScreen,
+  }
+);
+
+const AppContainer = createAppContainer(MainStack);
+
+export default class App extends Component {
+  render() {
+    return(
+      <AppContainer />
+    );
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
